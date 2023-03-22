@@ -73,3 +73,7 @@ jQuery("#just-energy").click(function($){
     jQuery('#avologic-range').attr('value','4');
   }
 });
+
+jQuery("#showfrom").click(function(){
+  jQuery("#fromofcal").show();
+});
