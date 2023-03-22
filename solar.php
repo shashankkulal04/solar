@@ -25,6 +25,8 @@ function solar_deactivation() {
 }
 register_deactivation_hook(__FILE__, 'solar_deactivation');
 
+require_once('engine.php');
+Test();
 
 // register jquery and style on initialization
 add_action('init', 'register_script');
@@ -32,7 +34,7 @@ function register_script(){
 	$ver = filemtime(plugin_dir_path(__FILE__).'js/main.js');
 	$ver_style = filemtime(plugin_dir_path(__FILE__).'css/main.css');
 	wp_register_script( 'custom_jquery', plugins_url('/js/main.js', __FILE__), array('jquery'), $ver, true);
-	//wp_register_script( 'avologic-ajax-js', plugins_url('/js/ajax.js', __FILE__), array('jquery'), $ver+255, true);
+	wp_register_script( 'avologic-ajax-js', plugins_url('/js/ajax.js', __FILE__), array('jquery'), $ver+255, true);
 	wp_register_script('avologic-fontawesome', plugins_url('/js/fontawesome.min.js', __FILE__), array('jquery'), $ver+200, true);
 	wp_register_style( 'new_style', plugins_url('/css/main.css', __FILE__), false, $ver_style, 'all');
 }
@@ -41,7 +43,7 @@ function register_script(){
 add_action('wp_enqueue_scripts', 'enqueue_style');
 function enqueue_style(){
 	wp_enqueue_script('custom_jquery');
-	//wp_enqueue_script('avologic-ajax-js');
+	wp_enqueue_script('avologic-ajax-js');
 	wp_enqueue_style( 'new_style' );
 	wp_localize_script('custom_jquery', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
 }
@@ -66,14 +68,8 @@ function getAllSolarData() {
 add_action( 'wp_ajax_Avologic_Get_Row', 'Avologic_Get_Row' );
 function Avologic_Get_Row() {
 	global $wpdb;
-	$cv = $_REQUEST['cv'];
-	$rv = $_REQUEST['rv'];
-	$q = "SELECT * FROM `wp_solar_data` WHERE type='$cv' and quantity = '$rv'";
-	$rs = $wpdb->get_results($q);
-	// echo "<pre>";
-	// print_r($rs[0]);
-	
-	$_SESSION['SolarData'] = $rs[0];
+	//$q = "SELECT * FROM `wp_solar_data` WHERE type='$cv' and quantity = '$rv'";
+
 	die();
 }
 add_action( 'wp_ajax_Avologic_Get_Row', 'Avologic_Get_Row' );

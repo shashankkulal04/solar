@@ -1,3 +1,5 @@
+var $ = jQuery.noConflict();
+
 // Funtion to update html according to conditions
 function updateFields(x = 'Just Energy - Residential', y = '4') {
   const rs = SolarData.find(val => val.type === x && val.quantity === y);
@@ -11,69 +13,71 @@ function updateFields(x = 'Just Energy - Residential', y = '4') {
 }
 
 // Update data default on load
-jQuery(document).ready(function(){ updateFields(); });
+$(document).ready(function(){ updateFields(); });
 
 // Update data on slider change
-// jQuery('#avologic-range').change(function(){
-//   let cv = jQuery('input[name="my_options"]:checked').val();
-//   let rv = jQuery('#avologic-range').val();
+// $('#avologic-range').change(function(){
+//   let cv = $('input[name="my_options"]:checked').val();
+//   let rv = $('#avologic-range').val();
 //   updateFields(cv, rv);
 // });
 document.getElementById('avologic-range').oninput = function() {
-  let cv = jQuery('input[name="my_options"]:checked').val();
-  let rv = jQuery('#avologic-range').val();
+  let cv = $('input[name="my_options"]:checked').val();
+  let rv = $('#avologic-range').val();
   updateFields(cv, rv); 
 };
 // Update data when energy type selected.
-jQuery('input[name="my_options"]').change(function(){
-  let cv = jQuery('input[name="my_options"]:checked').val();
-  let rv = jQuery('#avologic-range').val();
+$('input[name="my_options"]').change(function(){
+  let cv = $('input[name="my_options"]:checked').val();
+  let rv = $('#avologic-range').val();
   updateFields(cv, rv);
 });
 
-// jQuery("#up-front").prop('checked')
-//   jQuery("monPay").show();
+// $("#up-front").prop('checked')
+//   $("monPay").show();
 // }
 
-jQuery(document).ready(function(){
-  jQuery("#monPay").show();
-  jQuery(".fina customnene").show();
+$(document).ready(function(){
+  $("#monPay").show();
+  $(".fina customnene").show();
 });
-jQuery("#up-front").click(function($){
+
+$("#up-front").click(function($){
   if(this.checked){
-    jQuery("#monPay").show();
-    jQuery(".fina customnene").show();
-    jQuery(".finato").hide();
+    $("#monPay").show();
+    $(".fina customnene").show();
+    $(".finato").hide();
   }
 });
 
-jQuery("#payupfront").click(function($){
+$("#payupfront").click(function($){
   if(this.checked){
-    jQuery(".finato").show();
-    jQuery("#monPay").hide();
-    jQuery(".fina customnene").hide();
-    jQuery(".fina").hide();
+    $(".finato").show();
+    $("#monPay").hide();
+    $(".fina customnene").hide();
+    $(".fina").hide();
   }
 });
 
-jQuery("#energy-hot-water").click(function($){
+$("#energy-hot-water").click(function($){
   if(this.checked){
-    jQuery("#slidfour").hide();
-    jQuery("#slidfive").hide();
-    jQuery('#avologic-range').prop('min','6');
-    jQuery('#avologic-range').attr('value','6');
+    $("#slidfour").hide();
+    $("#slidfive").hide();
+    $('#avologic-range').prop('min','6');
+    $('#avologic-range').attr('value','6');
   }
 });
 
-jQuery("#just-energy").click(function($){
+$("#just-energy").click(function($){
   if(this.checked){
-    jQuery("#slidfour").show();
-    jQuery("#slidfive").show();
-    jQuery('#avologic-range').prop('min','4');
-    jQuery('#avologic-range').attr('value','4');
+    $("#slidfour").show();
+    $("#slidfive").show();
+    $('#avologic-range').prop('min','4');
+    $('#avologic-range').attr('value','4');
   }
 });
 
-jQuery("#showfrom").click(function(){
-  jQuery("#fromofcal").show();
+$("#showfrom").click(function(){
+  $("#fromofcal").show();
 });
+

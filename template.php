@@ -360,7 +360,7 @@
                 </a>
               </span>
             </div>
-            <button type="submit" class="fromsb" name="submitt">
+            <button type="button" class="fromsb" name="submitt">
               <p class="sub">Submit</p>
             </button>
             <img src="https://mysolar.cleverdigital.ie/wp-content/uploads/2023/01/Iphone-spinner-2.gif" class="loader" style="display: none;">
